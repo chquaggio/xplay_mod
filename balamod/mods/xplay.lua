@@ -6,7 +6,10 @@ local inject_ui = function()
 	local to_patch = "local button_height = 1.3"
 	local patch = [[
   local button_height = 1.3
-  add_xplay_func()
+  add_xplay_overlay()
+  sendDebugMessage("Hand cards:")
+  local inspect = get_inspect()
+  sendDebugMessage(inspect(G.hand.cards))
   local xplay_button = {n=G.UIT.C, config={id = 'xplay_button', align = "tm", minw = 2.5, padding = 0.3, r = 0.1, hover = true, colour = G.C.BLACK, button = "get_xplay", shadow = true}, nodes={
     {n=G.UIT.R, config={align = "bcm", padding = 0}, nodes={
       {n=G.UIT.T, config={text = "XPlay", scale = text_scale, colour = G.C.UI.TEXT_LIGHT, focus_args = {button = 'y', orientation = 'bm'}, func = 'set_button_pip'}}
